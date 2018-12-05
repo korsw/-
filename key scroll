@@ -1,0 +1,23 @@
+private void webBrowser1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+{
+    if (e.KeyCode == Keys.Up)
+    {
+        HtmlDocument htmlDoc = webBrowser1.Document;
+        //get current sroll position
+        int scrollTop = htmlDoc.GetElementsByTagName("HTML")[0].ScrollTop;
+        scrollTop = scrollTop > 5 ? scrollTop - 5 : 0;
+        int scrollLeft = htmlDoc.GetElementsByTagName("HTML")[0].ScrollLeft;
+        //move to the new position
+        webBrowser1.Document.Window.ScrollTo(new Point(scrollLeft, scrollTop));
+    }
+    else if (e.KeyCode == Keys.Down)
+    {
+        HtmlDocument htmlDoc = webBrowser1.Document;
+        //get current sroll position
+        int scrollTop = htmlDoc.GetElementsByTagName("HTML")[0].ScrollTop;
+        scrollTop = scrollTop + 5;
+        int scrollLeft = htmlDoc.GetElementsByTagName("HTML")[0].ScrollLeft;
+        //move to the new position
+        webBrowser1.Document.Window.ScrollTo(new Point(scrollLeft, scrollTop));
+    }
+}
